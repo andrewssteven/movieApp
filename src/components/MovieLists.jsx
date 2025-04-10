@@ -57,7 +57,7 @@ const [movies, setMovies] = useState([
         {
           title: "Black Clover",
           description: "Black Clover follows Asta, a boy born without magic in a world of mages, striving to become the Wizard King",
-          posterURL: "https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-41d8-61f7-b2d8-c8714a6f159b/raw?se=2025-04-10T00%3A24%3A38Z&sp=r&sv=2024-08-04&sr=b&scid=d57a1b23-68bc-5a10-ba4e-2f1d9494b6bd&skoid=7c382de0-129f-486b-9922-6e4a89c6eb7d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-09T20%3A54%3A39Z&ske=2025-04-10T20%3A54%3A39Z&sks=b&skv=2024-08-04&sig=Wa1A21V%2BU1PXzx3UftzVptRD2iwTcnGa2fYg8KPmLqU%3D",
+          posterURL: "https://i5.walmartimages.com/asr/2e69923a-d525-408f-adf4-0d484eec88ce.4c2364882690b46cb58be3eca96135c8.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF",
           rating: 8.5
         },
         {
@@ -91,12 +91,20 @@ const handleChange = (e) => {
 // this handles the form submit and return error is space is blank
 const handleSubmit = (e) => {
     e.preventDefault();
-    if (!newMovie.title || !newMovie.rating) {
-      alert('Title and rating are required!');
-      return;
-    }
-    // this changes the rating from string to number/float
-    setMovies(prevMovies => [...prevMovies, { ...newMovie, rating: parseFloat(newMovie.rating) }]);
+    // this declare a variable  to store updated movies and  changes the rating from string to number/float
+    setMovies( 
+      [...movies, { ...newMovie, rating: parseFloat(newMovie.rating) }]
+    )
+    setFilteredMovies(
+      [...movies, { ...newMovie, rating: parseFloat(newMovie.rating) }]
+    )
+
+    //alternative way to render movie list from filteredmovies 
+  // // this declare a variable  to store updated movies and  changes the rating from string to number/float
+  //   const updatedMovies = [...movies, { ...newMovie, rating: parseFloat(newMovie.rating) }];
+  //   setMovies(updatedMovies)
+  //   setFilteredMovies(updatedMovies)
+
     // this will reset the form back to blank
     setNewMovie({ title: '', description: '', posterURL: '', rating: '' });
   };
