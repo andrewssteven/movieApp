@@ -62,8 +62,8 @@ const filterMovies = (query, type) => {
         <Filter onFilter={filterMovies}/>
 
         {/* return movie list using map */}
-        <div className='my-10 mx-5 gap-4 grid grid-cols-4 '>
-            {filteredMovies.map((movie) => (<MovieCard
+        <div className='my-10 mx-5 gap-4 grid  grid-cols-1 md:grid-cols-4 '>
+            {filteredMovies.map((movie) => (<MovieCard key={movie.index}
             title={movie.title} description={movie.description}
             posterURL={movie.posterURL} rating={movie.rating}
             />)) }
@@ -71,7 +71,7 @@ const filterMovies = (query, type) => {
 
         {/* the add new movie form area */}
         <div className='mx-5 grid'>
-                <form action="" onSubmit={handleSubmit} className='space-y-4 border-2 rounded-md shadow-md  w-150 p-4  '>
+                <form action="" onSubmit={handleSubmit} className='space-y-4 border-2 rounded-md shadow-md  md:w-150 p-4  '>
                     <h1 className='text-center text-2xl font-bold  ' >Add Movie to List</h1>
                     <div className='flex space-x-16.5  '>
                       <label htmlFor="title">Title: </label>
